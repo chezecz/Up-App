@@ -43,8 +43,6 @@ class DataSource(private val context: Context) {
 
         val accountsUrl = "$baseUrl/accounts"
 
-//        val listAccounts: MutableList<Account> = mutableListOf<Account>()
-
         val queue = Volley.newRequestQueue(this.context)
 
         RequestWithHeaders(accountsUrl, cont, secretValue).also {
@@ -52,28 +50,5 @@ class DataSource(private val context: Context) {
             queue.add(it)
         }
 
-//        val request = object: JsonObjectRequest(
-//            Method.GET, accountsUrl, null,
-//            { response ->
-//                cont.resume(response)
-////                val accounts = response
-////                    .getJSONArray("data")
-////                listAccounts = convertJsonToObject(accounts)
-//            },
-//            {
-////                Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show()
-//                cont.resume(null)
-//            }
-//        )
-//        {
-//            override fun getHeaders(): MutableMap<String, String> {
-//                val headers = HashMap<String, String>()
-//                headers["Authorization"] = secretValue
-//                return headers
-//            }
-//        }
-
-//        VolleyService.requestQueue.add(request)
-//        VolleyService.requestQueue.start()
     }
 }
