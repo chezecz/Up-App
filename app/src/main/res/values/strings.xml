@@ -2,4 +2,6 @@
     <string name="app_name">Up App</string>
     <string name="balance">%s %s</string>
     <string name="currency">%s</string>
+    <string name="welcome_message">Welcome</string>
+    <string name="go_to">Go to App</string>
 </resources>
