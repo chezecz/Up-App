@@ -3,19 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcome">
-
-    <activity
-        android:id="@+id/welcome"
-        android:name="com.cheze.upapp.WelcomeApp"
-        android:label="activity_welcome"
-        tools:layout="@layout/activity_welcome" />
-
-    <activity
-        android:id="@+id/accounts_screen"
-        android:name="com.cheze.upapp.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-    <fragment android:id="@+id/balance_screen" />
-    <fragment android:id="@+id/transactions_screen" />
+    app:startDestination="@id/bankAccountFragment">
+    <fragment
+        android:id="@+id/bankAccountFragment"
+        android:name="com.cheze.upapp.BankAccountFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" />
 </navigation>
