@@ -18,10 +18,8 @@ class WelcomeApp : AppCompatActivity() {
         enterButton.setOnClickListener {
             startActivity(intent)
         }
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//        val navController = navHostFragment.navController
     }
-//
+
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
         return super.onCreateView(name, context, attrs)
     }
