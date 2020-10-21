@@ -2,8 +2,7 @@ package com.cheze.upapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.cheze.upapp.adapter.ItemAdapter
+import androidx.fragment.app.Fragment
 import com.cheze.upapp.data.DataSource
 import com.cheze.upapp.service.VolleyService
 import kotlinx.coroutines.CoroutineScope
@@ -21,20 +20,24 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         VolleyService.initialize(this)
-        val context = applicationContext
         job = Job()
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val accountRequest = DataSource(this)
         launch {
             val accounts = accountRequest.loadAccounts()
             val accountsObject = accountRequest.convertJsonToObject(accounts)
-            recyclerView.adapter = ItemAdapter(context, accountsObject)
-            recyclerView.setHasFixedSize(true)
+            val recyclerFragment = BankAccountFragment.newInstance(accountsObject)
+            addFragmentToActivity(recyclerFragment)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
+    }
+
+    private fun addFragmentToActivity(fragment: Fragment?){
+
+        if (fragment == null) return
+        supportFragmentManager.beginTransaction().add(R.id.main_layout, fragment).commitAllowingStateLoss()
     }
 }
