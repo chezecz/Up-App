@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cheze.upapp.R
-import com.cheze.upapp.model.Account
+import com.cheze.upapp.model.BankObject
 
 class ItemAdapter(
     private val context: Context,
-    private val dataset: List<Account>,
+    private val dataset: List<BankObject>,
 ): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val textTitleView: TextView = view.findViewById(R.id.item_title)
@@ -29,7 +29,6 @@ class ItemAdapter(
         with (item) {
             with (attr) {
                 holder.textTitleView.text = name
-                holder.textDescriptionView.text = "${balance.currency} ${balance.value}"
             }
         }
     }

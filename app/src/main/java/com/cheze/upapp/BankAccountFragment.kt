@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cheze.upapp.model.Account
+import com.cheze.upapp.model.BankObject
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -20,13 +20,13 @@ class BankAccountFragment() : Fragment() {
 
     private var columnCount = 1
 
-    private var data = listOf<Account>()
+    private var data = listOf<BankObject>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            data = Json.decodeFromString<List<Account>>(it.getSerializable(ARG_DATA).toString())
+            data = Json.decodeFromString<List<BankObject>>(it.getSerializable(ARG_DATA).toString())
         }
     }
 
@@ -54,7 +54,7 @@ class BankAccountFragment() : Fragment() {
         private const val ARG_DATA = "data"
 
         @JvmStatic
-        fun newInstance(accounts: List<Account>) =
+        fun newInstance(accounts: MutableList<BankObject>) =
             BankAccountFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_DATA,  Json.encodeToString(accounts))

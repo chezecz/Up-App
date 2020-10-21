@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.cheze.upapp.model.Transaction
+import com.cheze.upapp.model.BankObject
 
 class MyTransactionListRecyclerViewAdapter(
-    private val values: List<Transaction>
+    private val values: List<BankObject>
 ) : RecyclerView.Adapter<MyTransactionListRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,7 +22,9 @@ class MyTransactionListRecyclerViewAdapter(
         with (item) {
             with (attr) {
                 holder.idView.text = description
-                holder.contentView.text = amount.value
+                with (amount) {
+                    holder.contentView.text = "${this?.currency} ${this?.value}"
+                }
             }
         }
     }

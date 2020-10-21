@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cheze.upapp.model.Transaction
+import com.cheze.upapp.model.BankObject
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -20,13 +20,13 @@ class TransactionListFragment : Fragment() {
 
     private var columnCount = 1
 
-    private var data = listOf<Transaction>()
+    private var data = listOf<BankObject>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            data = Json.decodeFromString<List<Transaction>>(it.getSerializable(ARG_DATA_TR).toString())
+            data = Json.decodeFromString<List<BankObject>>(it.getSerializable(ARG_DATA_TR).toString())
         }
     }
 
@@ -43,7 +43,7 @@ class TransactionListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyTransactionListRecyclerViewAdapter(listOf<Transaction>())
+                adapter = MyTransactionListRecyclerViewAdapter(listOf<BankObject>())
             }
         }
         return view
@@ -54,7 +54,7 @@ class TransactionListFragment : Fragment() {
         private const val ARG_DATA_TR = "data"
 
         @JvmStatic
-        fun newInstance(transactions: List<Transaction>) =
+        fun newInstance(transactions: MutableList<BankObject>) =
             TransactionListFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_DATA_TR, Json.encodeToString(transactions))

@@ -1,19 +1,26 @@
 package com.cheze.upapp
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.cheze.upapp.model.Account
+import com.cheze.upapp.model.BankObject
 
 class MyBankAccountRecyclerViewAdapter(
-    private val values: List<Account>
+    private val values: List<BankObject>
 ) : RecyclerView.Adapter<MyBankAccountRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_item, parent, false)
+        val viewHolder = ViewHolder(view)
+        view.setOnClickListener {
+            Log.d("CLICKPOSITION", viewHolder.adapterPosition.toString(4))
+//            val mainActivity = MainActivity()
+//            mainActivity.getTransactions(ViewHolder(view).adapterPosition)
+        }
         return ViewHolder(view)
     }
 
@@ -22,7 +29,9 @@ class MyBankAccountRecyclerViewAdapter(
         with (item) {
             with (attr) {
                 holder.idView.text = name
-                holder.contentView.text = "${balance.currency} ${balance.value}"
+                with (balance) {
+                    holder.contentView.text = "${this?.currency} ${this?.value}"
+                }
             }
         }
     }

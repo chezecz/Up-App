@@ -37,7 +37,7 @@ class TransactionFragment : Fragment() {
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @param accountId Parameter Account ID.
+         * @param accountId Parameter Bank User ID.
          * @return A new instance of fragment TransactionFragment.
          */
         @JvmStatic
