@@ -11,7 +11,7 @@ import com.cheze.upapp.model.Account
 
 class ItemAdapter(
     private val context: Context,
-    private val dataset: List<Account>
+    private val dataset: List<Account>,
 ): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val textTitleView: TextView = view.findViewById(R.id.item_title)
