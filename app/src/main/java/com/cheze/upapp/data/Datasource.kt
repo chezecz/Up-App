@@ -51,4 +51,16 @@ class DataSource(private val context: Context) {
         }
 
     }
+
+    suspend fun loadTransactions(accountId: String) = suspendCoroutine<JSONObject> { cont ->
+
+        val transactionUrl = "$baseUrl/accounts/$accountId/transactions"
+
+        val queue = Volley.newRequestQueue(this.context)
+
+        RequestWithHeaders(transactionUrl, cont, secretValue).also {
+            it.setShouldCache(false)
+            queue.add(it)
+        }
+    }
 }
