@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         VolleyService.initialize(this)
         job = Job()
         val accountRequest = DataSource(this)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
         launch {
             val accounts = accountRequest.loadAccounts()
             val accountsObject = accountRequest.convertJsonToObject(accounts)
