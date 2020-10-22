@@ -3,9 +3,6 @@ package com.cheze.upapp.data
 import android.content.Context
 import com.android.volley.toolbox.Volley
 import com.cheze.upapp.R
-import com.cheze.upapp.model.BankAttr
-import com.cheze.upapp.model.BankObject
-import com.cheze.upapp.model.MoneyObject
 import com.cheze.upapp.service.RequestWithHeaders
 import org.json.JSONObject
 import kotlin.coroutines.suspendCoroutine
@@ -16,7 +13,7 @@ class DataSource(private val context: Context) {
 
     suspend fun loadAccounts() = suspendCoroutine<JSONObject> { cont ->
 
-        val accountsUrl = "$baseUrl/accounts"
+        val accountsUrl = "$baseUrl/${context.getString(R.string.account_endpoint)}"
 
         val queue = Volley.newRequestQueue(this.context)
 
@@ -29,7 +26,7 @@ class DataSource(private val context: Context) {
 
     suspend fun loadTransactions(accountId: String) = suspendCoroutine<JSONObject> { cont ->
 
-        val transactionUrl = "$baseUrl/accounts/$accountId/transactions"
+        val transactionUrl = "$baseUrl${context.getString(R.string.account_endpoint)}/$accountId${context.getString(R.string.transaction_endpoint)}"
 
         val queue = Volley.newRequestQueue(this.context)
 
