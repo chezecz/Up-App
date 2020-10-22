@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cheze.upapp.R
-import com.cheze.upapp.adapter.MyTransactionListRecyclerViewAdapter
+import com.cheze.upapp.adapter.TransactionAdapter
 import com.cheze.upapp.model.BankObject
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -45,7 +45,7 @@ class TransactionListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyTransactionListRecyclerViewAdapter(listOf<BankObject>())
+                adapter = TransactionAdapter(listOf<BankObject>())
             }
         }
         return view

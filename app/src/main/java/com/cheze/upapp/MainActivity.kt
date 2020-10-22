@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.cheze.upapp.data.DataSource
-import com.cheze.upapp.fragment.BankAccountFragment
+import com.cheze.upapp.fragment.AccountListFragment
 import com.cheze.upapp.fragment.TransactionListFragment
 import com.cheze.upapp.helper.Converter
 import com.cheze.upapp.service.VolleyService
@@ -32,9 +32,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         val navController = navHostFragment.navController
         launch {
             val accounts = accountRequest.loadAccounts()
-//            val accountsObject = accountRequest.convertJsonToObject(accounts)
             val accountsObject = converter.convertJsonToObject(accounts)
-            val recyclerFragment = BankAccountFragment.newInstance(accountsObject)
+            val recyclerFragment = AccountListFragment.newInstance(accountsObject)
             getTransactions("b8fc7826-c7f7-4f44-a105-d24c0f3b87ce")
             addFragmentToActivity(recyclerFragment)
         }

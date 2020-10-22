@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cheze.upapp.R
-import com.cheze.upapp.adapter.MyBankAccountRecyclerViewAdapter
+import com.cheze.upapp.adapter.AccountAdapter
 import com.cheze.upapp.model.BankObject
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -18,7 +18,7 @@ import kotlinx.serialization.json.Json
 /**
  * A fragment representing a list of Items.
  */
-class BankAccountFragment() : Fragment() {
+class AccountListFragment() : Fragment() {
 
     private var columnCount = 1
 
@@ -45,7 +45,7 @@ class BankAccountFragment() : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyBankAccountRecyclerViewAdapter(data)
+                adapter = AccountAdapter(data)
             }
         }
         return view
@@ -57,7 +57,7 @@ class BankAccountFragment() : Fragment() {
 
         @JvmStatic
         fun newInstance(accounts: MutableList<BankObject>) =
-            BankAccountFragment().apply {
+            AccountListFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_DATA,  Json.encodeToString(accounts))
                 }

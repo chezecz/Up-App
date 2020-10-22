@@ -1,6 +1,5 @@
 package com.cheze.upapp.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,19 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cheze.upapp.R
 import com.cheze.upapp.model.BankObject
 
-class MyBankAccountRecyclerViewAdapter(
+class TransactionAdapter(
     private val values: List<BankObject>
-) : RecyclerView.Adapter<MyBankAccountRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_item, parent, false)
-        val viewHolder = ViewHolder(view)
-        view.setOnClickListener {
-            Log.d("CLICKPOSITION", viewHolder.adapterPosition.toString(4))
-//            val mainActivity = MainActivity()
-//            mainActivity.getTransactions(ViewHolder(view).adapterPosition)
-        }
+            .inflate(R.layout.fragment_transactions, parent, false)
         return ViewHolder(view)
     }
 
@@ -29,8 +22,8 @@ class MyBankAccountRecyclerViewAdapter(
         val item = values[position]
         with (item) {
             with (attr) {
-                holder.idView.text = name
-                with (balance) {
+                holder.idView.text = description
+                with (amount) {
                     holder.contentView.text = "${this?.currency} ${this?.value}"
                 }
             }
