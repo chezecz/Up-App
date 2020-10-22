@@ -4,7 +4,4 @@
     <string name="currency">%s</string>
     <string name="welcome_message">Welcome</string>
     <string name="go_to">Go to App</string>
-    <string name="api_url">https://api.up.com.au/api/v1</string>
-    <string name="account_endpoint">/accounts</string>
-    <string name="transaction_endpoint">/transactions</string>
 </resources>

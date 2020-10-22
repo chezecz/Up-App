@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_url">https://api.up.com.au/api/v1</string>
+    <string name="account_endpoint">/accounts</string>
+    <string name="transaction_endpoint">/transactions</string>
+</resources>
