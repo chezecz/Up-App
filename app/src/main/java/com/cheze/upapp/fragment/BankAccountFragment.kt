@@ -1,4 +1,4 @@
-package com.cheze.upapp
+package com.cheze.upapp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cheze.upapp.R
+import com.cheze.upapp.adapter.MyBankAccountRecyclerViewAdapter
 import com.cheze.upapp.model.BankObject
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -16,7 +18,7 @@ import kotlinx.serialization.json.Json
 /**
  * A fragment representing a list of Items.
  */
-class TransactionListFragment : Fragment() {
+class BankAccountFragment() : Fragment() {
 
     private var columnCount = 1
 
@@ -26,7 +28,7 @@ class TransactionListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            data = Json.decodeFromString<List<BankObject>>(it.getSerializable(ARG_DATA_TR).toString())
+            data = Json.decodeFromString<List<BankObject>>(it.getSerializable(ARG_DATA).toString())
         }
     }
 
@@ -34,7 +36,7 @@ class TransactionListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_transaction_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -43,7 +45,7 @@ class TransactionListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyTransactionListRecyclerViewAdapter(listOf<BankObject>())
+                adapter = MyBankAccountRecyclerViewAdapter(data)
             }
         }
         return view
@@ -51,13 +53,13 @@ class TransactionListFragment : Fragment() {
 
     companion object {
 
-        private const val ARG_DATA_TR = "data"
+        private const val ARG_DATA = "data"
 
         @JvmStatic
-        fun newInstance(transactions: MutableList<BankObject>) =
-            TransactionListFragment().apply {
+        fun newInstance(accounts: MutableList<BankObject>) =
+            BankAccountFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(ARG_DATA_TR, Json.encodeToString(transactions))
+                    putSerializable(ARG_DATA,  Json.encodeToString(accounts))
                 }
             }
     }

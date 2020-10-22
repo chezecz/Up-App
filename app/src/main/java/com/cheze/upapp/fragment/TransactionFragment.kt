@@ -1,10 +1,11 @@
-package com.cheze.upapp
+package com.cheze.upapp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.cheze.upapp.R
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ACCOUNT_ID = "account-id"

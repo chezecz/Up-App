@@ -6,7 +6,7 @@
     app:startDestination="@id/bankAccountFragment">
     <fragment
         android:id="@+id/bankAccountFragment"
-        android:name="com.cheze.upapp.BankAccountFragment"
+        android:name="com.cheze.upapp.fragment.BankAccountFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_item_list" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionFragment"
-        android:name="com.cheze.upapp.TransactionFragment"
+        android:name="com.cheze.upapp.fragment.TransactionFragment"
         android:label="fragment_transaction"
         tools:layout="@layout/fragment_transaction" />
 </navigation>
